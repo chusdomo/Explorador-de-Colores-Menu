@@ -10,50 +10,266 @@
       padding: 0;
       box-sizing: border-box;
     }
+    
     body {
-      font-family: 'Segoe UI', sans-serif;
-      background-color: #f9f9f9;
-      color: #333;
-      line-height: 1.6;
-      padding: 40px;
-      text-align: center;
-    }
-    h1 {
-      font-size: 2rem;
-      margin-bottom: 40px;
-    }
-    .button-container {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      min-height: 100vh;
       display: flex;
       flex-direction: column;
-      gap: 20px;
-      max-width: 500px;
-      margin: 0 auto;
+      justify-content: center;
+      align-items: center;
+      padding: 20px;
+      position: relative;
+      overflow-x: hidden;
     }
+    
+    body::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: url('data:image/svg+xml,<svg width="60" height="60" viewBox="0 0 60 60" xmlns="http://www.w3.org/2000/svg"><g fill="none" fill-rule="evenodd"><g fill="%23ffffff" fill-opacity="0.1"><circle cx="30" cy="30" r="4"/></g></svg>') repeat;
+      z-index: -1;
+    }
+    
+    .container {
+      background: rgba(255, 255, 255, 0.95);
+      backdrop-filter: blur(10px);
+      border-radius: 25px;
+      padding: 50px 40px;
+      box-shadow: 0 25px 50px rgba(0, 0, 0, 0.2);
+      max-width: 600px;
+      width: 100%;
+      animation: slideIn 0.8s ease-out;
+    }
+    
+    @keyframes slideIn {
+      from {
+        opacity: 0;
+        transform: translateY(30px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+    
+    h1 {
+      font-size: 2.8rem;
+      font-weight: 800;
+      background: linear-gradient(45deg, #ff6b6b, #4ecdc4, #45b7d1, #96ceb4, #ffeaa7, #dda0dd);
+      background-size: 300% 300%;
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      text-align: center;
+      margin-bottom: 20px;
+      animation: gradientShift 4s ease-in-out infinite;
+      text-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    }
+    
+    @keyframes gradientShift {
+      0%, 100% { background-position: 0% 50%; }
+      50% { background-position: 100% 50%; }
+    }
+    
+    .subtitle {
+      text-align: center;
+      color: #666;
+      font-size: 1.1rem;
+      margin-bottom: 40px;
+      opacity: 0;
+      animation: fadeInUp 1s ease-out 0.3s forwards;
+    }
+    
+    @keyframes fadeInUp {
+      from {
+        opacity: 0;
+        transform: translateY(20px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+    
+    .button-container {
+      display: grid;
+      gap: 15px;
+      animation: fadeInUp 1s ease-out 0.6s both;
+    }
+    
     .button-container button {
-      padding: 15px 25px;
-      font-size: 1.2rem;
-      font-weight: bold;
+      padding: 18px 30px;
+      font-size: 1.1rem;
+      font-weight: 600;
       border: none;
-      border-radius: 8px;
-      background-color: #007acc;
-      color: white;
+      border-radius: 15px;
       cursor: pointer;
-      transition: background-color 0.3s ease;
+      transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+      position: relative;
+      overflow: hidden;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      color: white;
+      text-shadow: 0 1px 2px rgba(0, 0, 0, 0.2);
     }
+    
+    .button-container button::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: -100%;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.3), transparent);
+      transition: left 0.5s;
+    }
+    
+    .button-container button:hover::before {
+      left: 100%;
+    }
+    
+    .btn-escala {
+      background: linear-gradient(135deg, #ff6b6b, #ee5a52);
+      box-shadow: 0 8px 25px rgba(255, 107, 107, 0.4);
+    }
+    
+    .btn-colores {
+      background: linear-gradient(135deg, #4ecdc4, #44a08d);
+      box-shadow: 0 8px 25px rgba(78, 205, 196, 0.4);
+    }
+    
+    .btn-mezclas {
+      background: linear-gradient(135deg, #45b7d1, #3498db);
+      box-shadow: 0 8px 25px rgba(69, 183, 209, 0.4);
+    }
+    
+    .btn-paletas {
+      background: linear-gradient(135deg, #96ceb4, #85c1a3);
+      box-shadow: 0 8px 25px rgba(150, 206, 180, 0.4);
+    }
+    
+    .btn-complementarios {
+      background: linear-gradient(135deg, #ffeaa7, #fdcb6e);
+      box-shadow: 0 8px 25px rgba(255, 234, 167, 0.4);
+    }
+    
+    .btn-tonos {
+      background: linear-gradient(135deg, #dda0dd, #c39bd3);
+      box-shadow: 0 8px 25px rgba(221, 160, 221, 0.4);
+    }
+    
     .button-container button:hover {
-      background-color: #005fa3;
+      transform: translateY(-5px) scale(1.02);
+      box-shadow: 0 15px 35px rgba(0, 0, 0, 0.3);
+    }
+    
+    .button-container button:active {
+      transform: translateY(-2px) scale(0.98);
+    }
+    
+    .floating-colors {
+      position: absolute;
+      width: 60px;
+      height: 60px;
+      border-radius: 50%;
+      opacity: 0.6;
+      animation: float 6s ease-in-out infinite;
+    }
+    
+    .color1 {
+      background: linear-gradient(45deg, #ff6b6b, #ee5a52);
+      top: 10%;
+      left: 10%;
+      animation-delay: 0s;
+    }
+    
+    .color2 {
+      background: linear-gradient(45deg, #4ecdc4, #44a08d);
+      top: 20%;
+      right: 15%;
+      animation-delay: 1s;
+    }
+    
+    .color3 {
+      background: linear-gradient(45deg, #45b7d1, #3498db);
+      bottom: 30%;
+      left: 5%;
+      animation-delay: 2s;
+    }
+    
+    .color4 {
+      background: linear-gradient(45deg, #96ceb4, #85c1a3);
+      bottom: 10%;
+      right: 10%;
+      animation-delay: 3s;
+    }
+    
+    @keyframes float {
+      0%, 100% {
+        transform: translateY(0px) rotate(0deg);
+      }
+      50% {
+        transform: translateY(-20px) rotate(180deg);
+      }
+    }
+    
+    @media (max-width: 768px) {
+      .container {
+        padding: 30px 20px;
+        margin: 10px;
+      }
+      
+      h1 {
+        font-size: 2.2rem;
+      }
+      
+      .button-container button {
+        padding: 15px 20px;
+        font-size: 1rem;
+      }
+      
+      .floating-colors {
+        width: 40px;
+        height: 40px;
+      }
     }
   </style>
 </head>
 <body>
-  <h1>🎨 Exploradores de Colores</h1>
-  <div class="button-container">
-    <button onclick="window.location.href='https://chusdomo.github.io/Calculador-de-Escalas/'">ESCALA 1:x</button>
-    <button onclick="window.location.href='https://chusdomo.github.io/Tabla-colores-general/'">COLORES HEX, RGB, RYB</button>
-    <button onclick="window.location.href='https://chusdomo.github.io/mezclas-colores/'">MEZCLAS COLORES TONOS</button>
-    <button onclick="window.location.href='https://chusdomo.github.io/Paletas-de-colores/'">PALETAS COLORES</button>
-    <button onclick="window.location.href='https://chusdomo.github.io/Colores-complementarios-aclarar-oscurecer/'">COLORES COMPLEMENTARIOS</button>
-    <button onclick="window.location.href='https://chusdomo.github.io/Guia-Visual-Practica-para-la-mezcla-de-colores/'">MEZCLA DE TONOS</button>
+  <div class="floating-colors color1"></div>
+  <div class="floating-colors color2"></div>
+  <div class="floating-colors color3"></div>
+  <div class="floating-colors color4"></div>
+  
+  <div class="container">
+    <h1>🎨 Exploradores de Colores</h1>
+    <p class="subtitle">Descubre el mundo del color con nuestras herramientas interactivas</p>
+    
+    <div class="button-container">
+      <button class="btn-escala" onclick="window.location.href='https://chusdomo.github.io/Calculador-de-Escalas/'">
+        📐 Escala 1:x
+      </button>
+      <button class="btn-colores" onclick="window.location.href='https://chusdomo.github.io/Tabla-colores-general/'">
+        🌈 Colores HEX, RGB, RYB
+      </button>
+      <button class="btn-mezclas" onclick="window.location.href='https://chusdomo.github.io/mezclas-colores/'">
+        🎭 Mezclas Colores Tonos
+      </button>
+      <button class="btn-paletas" onclick="window.location.href='https://chusdomo.github.io/Paletas-de-colores/'">
+        🎨 Paletas Colores
+      </button>
+      <button class="btn-complementarios" onclick="window.location.href='https://chusdomo.github.io/Colores-complementarios-aclarar-oscurecer/'">
+        ⚖️ Colores Complementarios
+      </button>
+      <button class="btn-tonos" onclick="window.location.href='https://chusdomo.github.io/Guia-Visual-Practica-para-la-mezcla-de-colores/'">
+        🌸 Mezcla de Tonos
+      </button>
+    </div>
   </div>
 </body>
 </html>
